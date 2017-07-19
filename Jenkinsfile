@@ -9,7 +9,7 @@ node ('mulesoft') {
   stage ('deploy') {
   	sh """
   	
-  	anypoint-cli --username=msardinas --password=Sardinas1
+  	sudo anypoint-cli --username=msardinas --password=Sardinas1
   	
   	runtime-mgr cloudhub-application modify hwt ${WORKSPACE}/target/hello-world_1.4.0-1-1.0.0-SNAPSHOT.zip
 	  	
