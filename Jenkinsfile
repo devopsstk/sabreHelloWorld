@@ -7,13 +7,6 @@ node ('mulesoft') {
   	sh 'mvn clean install'
   }
   stage ('deploy') {
-  	sh """
-  	
-  	sudo anypoint-cli --username=msardinas --password=Sardinas1
-  	
-  	runtime-mgr cloudhub-application modify hwt ${WORKSPACE}/target/hello-world_1.4.0-1-1.0.0-SNAPSHOT.zip
-	  	
-"""
-
+  	sh 'sudo anypoint-cli --username=msardinas --password=Sardinas1 runtime-mgr cloudhub-application modify hwt ${WORKSPACE}/target/hello-world_1.4.0-1-1.0.0-SNAPSHOT.zip'
   }
 }
