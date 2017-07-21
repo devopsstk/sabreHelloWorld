@@ -9,4 +9,20 @@ node ('mulesoft') {
   stage ('deploy') {
   	sh 'sudo anypoint-cli --username=msardinas --password=Sardinas1 runtime-mgr cloudhub-application modify hwt ${WORKSPACE}/target/hello-world_1.4.0-1-1.0.0-SNAPSHOT.zip'
   }
+  stage ('artifactory') {
+  	def server = Artifactory.server 'artifactory'
+  	def buildInfo = Artifactory.newBuildInfo()
+  	
+  	def artifactoryUploadDsl = """{
+		 "files": [
+		  {
+		      "pattern": "target/*.zip",
+		      "target": ""
+		    }
+		 ]
+		}"""
+  	
+	server.upload(artifactoryUploadDsl, buildInfo)
+	server.publishBuildInfo(buildInfo)
+  }
 }
