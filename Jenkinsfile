@@ -17,12 +17,13 @@ node ('mulesoft') {
 		 "files": [
 		  {
 		      "pattern": "target/*.zip",
-		      "target": ""
+		      "target": "/"
 		    }
 		 ]
 		}"""
   	
 	server.upload(artifactoryUploadDsl, buildInfo)
 	server.publishBuildInfo(buildInfo)
+
   }
 }
