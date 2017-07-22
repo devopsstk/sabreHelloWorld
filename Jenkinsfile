@@ -17,7 +17,7 @@ node ('mulesoft') {
 		 "files": [
 		  {
 		      "pattern": "target/*.zip",
-		      "target": "/"
+		      "target": "sabre/helloWorld/"
 		    }
 		 ]
 		}"""
